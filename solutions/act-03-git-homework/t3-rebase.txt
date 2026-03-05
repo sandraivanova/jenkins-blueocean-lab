@@ -47,3 +47,77 @@ git commit -m "second commit for homework"
  1 file changed, 30 insertions(+)
 
  --nova promena za master pravam
+
+
+git switch master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+ git add t3-rebase.txt
+PS C:\Users\User\OneDrive\Десктоп\kiii_1\solutions\act-03-git-homework> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   t3-rebase.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../act-02-git-lab/t3-merge.txt
+        ../act-02-git-lab/t5-remotes.txt
+
+PS C:\Users\User\OneDrive\Десктоп\kiii_1\solutions\act-03-git-homework> git commit -m "third commit on homework"
+[master 42683be] third commit on homework
+ 1 file changed, 49 insertions(+)
+ create mode 100644 solutions/act-03-git-homework/t3-rebase.txt
+
+ git log --oneline --decorate --graph --all
+>> 
+* 42683be (HEAD -> master) third commit on homework
+* 9ad1a79 (origin/master) first_2task
+| * 9dd331a (topicHomework) second commit for homework
+| * c091190 first commit for homework
+|/  
+| *   6dfd28e (refs/stash) WIP on topic: 41103f0 topic1
+| |\  
+| | * 8cdc89c index on topic: 41103f0 topic1
+| |/  
+| * 41103f0 (topic) topic1
+|/  
+* 6ca014f (task3, newBranch) fixed
+* 2ab3bf8 Initial commit
+* b337b99 prv task
+
+git switch topicHomework
+Switched to branch 'topicHomework'
+
+git rebase master
+>>
+Auto-merging solutions/act-03-git-homework/t3-rebase.txt
+CONFLICT (content): Merge conflict in solutions/act-03-git-homework/t3-rebase.txt
+error: could not apply 9dd331a... second commit for homework
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Could not apply 9dd331a... second commit for homework
+
+git log --oneline --decorate --graph --all
+>>
+* 60c0142 (HEAD) first commit for homework
+* 42683be (master) third commit on homework
+* 9ad1a79 (origin/master) first_2task
+| * 9dd331a (topicHomework) second commit for homework
+| * c091190 first commit for homework
+|/
+| *   6dfd28e (refs/stash) WIP on topic: 41103f0 topic1
+| |\
+| | * 8cdc89c index on topic: 41103f0 topic1
+| |/
+| * 41103f0 (topic) topic1
+|/
+* 6ca014f (task3, newBranch) fixed
+* 2ab3bf8 Initial commit
+* b337b99 prv task
